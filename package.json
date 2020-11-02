@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/martinmphil/assesstech/issues"
   },
-  "homepage": "https://github.com/martinmphil/assesstech#readme"
+  "homepage": "https://github.com/martinmphil/assesstech#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
