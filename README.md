@@ -7,7 +7,7 @@ e-learning assessment
 ## Project setup
 
 ```
-npm install
+$ npm install
 ```
 
 ### Run
