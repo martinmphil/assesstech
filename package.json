@@ -22,5 +22,8 @@
   "homepage": "https://github.com/martinmphil/assesstech#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "cypress": "^5.5.0"
   }
 }
