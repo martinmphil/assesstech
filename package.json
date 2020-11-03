@@ -24,6 +24,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "cypress": "^5.5.0"
+    "cypress": "^5.5.0",
+    "eslint": "^7.12.1"
   }
 }
