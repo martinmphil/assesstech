@@ -12,4 +12,7 @@ describe("home page", () => {
       .contains("answer", { matchCase: false })
       .contains("question", { matchCase: false });
   });
+  it("loads scenario text", () => {
+    cy.get(".scenario").contains("Which planet orbits furthest from the sun?");
+  });
 });
