@@ -8,20 +8,17 @@ describe("home page", () => {
     cy.get("h1");
   });
   it("has instructions", () => {
-    cy.get(".instructions")
+    cy.get("main .instructions")
       .contains("answer", { matchCase: false })
       .contains("question", { matchCase: false });
   });
-  it("has question article", () => {
-    cy.get("article.question");
+  it("has question article in main el", () => {
+    cy.get("main article.question");
   });
-  it("has scenario section", () => {
-    cy.get("section.scenario");
+  it("has scenario section in question", () => {
+    cy.get("article.question section.scenario");
   });
-  it("has answer-choices section", () => {
-    cy.get("section.choices");
+  it("has answer-choices section in question", () => {
+    cy.get("article.question section.choices");
   });
-  // it("loads scenario text", () => {
-  //   cy.get(".scenario").contains("Which planet orbits furthest from the sun?");
-  // });
 });
