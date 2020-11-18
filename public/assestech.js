@@ -1,26 +1,32 @@
 "use strict";
 
-function displayScenario(string) {
+fetch("./phie2zubepeumahl.json")
+  .then((res) => res.json())
+  .then((data) => {
+    renderScenario(data.scenario);
+    renderChoices(data.choices);
+  });
+
+function renderScenario(string) {
   const el = document.querySelector(".scenario");
   el.innerHTML = `<p>${string}</p>`;
 }
 
-function displayChoices(array) {
+function renderChoices(array) {
   const el = document.querySelector(".choices");
-  el.innerHTML = `
-  <p>Choices:</p>
-  <ol>
-    <li>${array[0]}</li>
-    <li>${array[1]}</li>
-    <li>${array[2]}</li>
-    <li>${array[3]}</li>
-  </ol>
-  `;
+  const html = answerChoicesFrom(array);
+  el.innerHTML = html;
 }
 
-fetch("./phie2zubepeumahl.json")
-  .then((res) => res.json())
-  .then((data) => {
-    displayScenario(data.scenario);
-    displayChoices(data.choices);
-  });
+function answerChoicesFrom(array) {
+  let html = "<hr />";
+  html += array
+    .map((x) => {
+      return `<button class="answer-choice">${x}</button><hr />`;
+    })
+    .join("");
+  return html;
+}
+
+// for unit testing purposes only
+export default answerChoicesFrom;
