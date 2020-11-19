@@ -8,7 +8,7 @@ describe("answerChoicesFrom a single element array", () => {
     expect(html).to.be.a("string");
   });
   it("returns exact html", () => {
-    let a = `<hr /><button class="answer-choice">choice A</button><hr />`;
+    let a = `<hr /><button id="a1" class="answer-choice">choice A</button><hr />`;
     expect(html).to.eq(a);
   });
 });
@@ -24,6 +24,10 @@ describe("answerChoicesFrom a four-element array", () => {
       .contains("choice A")
       .and.contains("choice B")
       .and.contains("choice C")
-      .and.contains("choice D");
+      .and.contains("choice D")
+      .and.contains('id="a1"')
+      .and.contains('id="a2"')
+      .and.contains('id="a3"')
+      .and.contains('id="a4"');
   });
 });

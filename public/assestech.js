@@ -13,16 +13,19 @@ function renderScenario(string) {
 }
 
 function renderChoices(array) {
-  const el = document.querySelector(".choices");
+  const section = document.querySelector("section.choices");
   const html = answerChoicesFrom(array);
-  el.innerHTML = html;
+  section.innerHTML = html;
 }
+
+// pure functions
 
 function answerChoicesFrom(array) {
   let html = "<hr />";
   html += array
-    .map((x) => {
-      return `<button class="answer-choice">${x}</button><hr />`;
+    .map((x, i) => {
+      let id = "a" + (i + 1);
+      return `<button id="${id}" class="answer-choice">${x}</button><hr />`;
     })
     .join("");
   return html;
