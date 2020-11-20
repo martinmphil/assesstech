@@ -13,4 +13,15 @@ describe("assesstech JavaScript", () => {
     cy.get("section.choices > p").should("not.have.id", "‡");
     // para with id="‡" from html file is replaced when js script loads.
   });
+  it("stores answer locally", () => {
+    cy.visit("/");
+    cy.clearLocalStorage().should((ls) => {
+      expect(ls.getItem("question_id")).to.be.null;
+    });
+    cy.get("#a1")
+      .click()
+      .should(() => {
+        expect(localStorage.getItem("question_id")).to.eq("a1");
+      });
+  });
 });

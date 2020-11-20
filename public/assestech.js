@@ -16,6 +16,16 @@ function renderChoices(array) {
   const section = document.querySelector("section.choices");
   const html = answerChoicesFrom(array);
   section.innerHTML = html;
+  const nodeList = section.querySelectorAll("button");
+  hearAnswersFrom(nodeList);
+}
+
+function hearAnswersFrom(nodeList) {
+  nodeList.forEach((element) => {
+    element.addEventListener("click", (event) => {
+      localStorage.setItem("question_id", event.target.id);
+    });
+  });
 }
 
 // pure functions
