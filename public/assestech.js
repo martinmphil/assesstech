@@ -40,6 +40,3 @@ function answerChoicesFrom(array) {
     .join("");
   return html;
 }
-
-// for unit testing purposes only
-export default answerChoicesFrom;
