@@ -1,6 +1,6 @@
 "use strict";
 
-fetch("./phie2zubepeumahl.json")
+fetch("./johd3aiyaizohchi.json")
   .then((res) => res.json())
   .then((data) => {
     renderScenario(data.scenario);
