@@ -1,11 +1,21 @@
 "use strict";
 
-fetch("./johd3aiyaizohchi.json")
-  .then((res) => res.json())
-  .then((data) => {
-    renderScenario(data.scenario);
-    renderChoices(data.choices);
-  });
+main();
+
+function main() {
+  let currentQId = "phie2zubepeumahl";
+  getQuestionFor(currentQId);
+}
+
+function getQuestionFor(questionID) {
+  let url = `./${questionID}.json`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      renderScenario(data.scenario);
+      renderChoices(data.choices);
+    });
+}
 
 function renderScenario(string) {
   const el = document.querySelector(".scenario");
