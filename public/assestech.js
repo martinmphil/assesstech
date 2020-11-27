@@ -31,9 +31,16 @@ function renderChoices(array) {
 }
 
 function hearAnswersFrom(nodeList) {
+  // improve via component made with Svelte
+  // see jottings repo
   nodeList.forEach((element) => {
     element.addEventListener("click", (event) => {
       localStorage.setItem("question_id", event.target.id);
+      if (event.target.id === "a2") {
+        alert("​Yes, correct!");
+      } else {
+        alert("Sorry, incorrect.");
+      }
     });
   });
 }
