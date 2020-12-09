@@ -1,0 +1,9 @@
+{
+  "question_structure": "four_multiple_choices",
+
+  "scenario": "Which is the lightest element?",
+
+  "choices": ["Oxygen", "Nitrogen", "Hydrogen", "Helium"],
+
+  "idealAnswer": "a3"
+}

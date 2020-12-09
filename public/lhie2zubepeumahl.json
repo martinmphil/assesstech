@@ -1,0 +1,9 @@
+{
+  "question_structure": "four_multiple_choices",
+
+  "scenario": "Which planet orbits furthest from the sun?",
+
+  "choices": ["Uranus", "Neptune", "Saturn", "Jupiter"],
+
+  "idealAnswer": "a2"
+}
