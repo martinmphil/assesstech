@@ -1,54 +1,94 @@
 "use strict";
 
-main();
+exam();
 
-function main() {
-  // Add new questions to following question array
-  const questions = ["j001", "kohd3aiyaizohchi", "phie2zubepeumahl"];
+function exam() {
+  // Add new questions to array
+  const questions = ["j001", "kohd3aiyaizohchi", "lhie2zubepeumahl"];
   answerListners();
   let currentQIndex = 0;
-  let rubric = ["a4"];
-  let submission = ["a"];
+  let submission = {};
   let examPaper = {};
+  examPaper[questions[0]] = {
+    scenario: "q1",
+    choices: ["a", "b", "c", "d"],
+    rubric: "a4",
+  };
 
   questions.forEach((element, index) => {
     if (index > 0) {
-      examPaper[element] = { scenario: "", choices: ["", "", "", ""] };
+      examPaper[element] = {
+        scenario: "",
+        choices: ["", "", "", ""],
+        rubric: "",
+      };
+      getQuestionFor(element);
     }
   });
 
   //
   //
-  // TO RMEOVE
+  // TO REMOVE
   //
   //
-  console.log(questions);
-  console.log(rubric);
+  // console.log(questions);
   console.log(submission);
-  console.log(examPaper);
   console.log(currentQIndex);
+
+  function answerListners() {
+    // Temporary event handler while coding exam question fetching
+    //
+    // document.querySelector("#a1").addEventListener("click", (event) => {
+    //   alert(event.target.id);
+    // });
+    //
+    document.querySelector("#a1").addEventListener("click", () => {
+      alert("Sorry, incorrect.");
+    });
+    document.querySelector("#a2").addEventListener("click", () => {
+      alert("Sorry, incorrect.");
+    });
+    document.querySelector("#a3").addEventListener("click", () => {
+      alert("Sorry, incorrect.");
+    });
+    document.querySelector("#a4").addEventListener("click", () => {
+      alert("Yes, correct!");
+    });
+  }
+
+  function getQuestionFor(questionId) {
+    let url = `./${questionId}.json`;
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        examPaper[questionId] = {
+          scenario: data.scenario,
+          choices: data.choices,
+          rubric: data.rubric,
+        };
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 }
 
-function answerListners() {
-  // Temporary event handler while coding exam question fetching
-  //
-  // document.querySelector("#a1").addEventListener("click", (event) => {
-  //   alert(event.target.id);
-  // });
-  //
-  document.querySelector("#a1").addEventListener("click", () => {
-    alert("Sorry, incorrect.");
-  });
-  document.querySelector("#a2").addEventListener("click", () => {
-    alert("Sorry, incorrect.");
-  });
-  document.querySelector("#a3").addEventListener("click", () => {
-    alert("Sorry, incorrect.");
-  });
-  document.querySelector("#a4").addEventListener("click", () => {
-    alert("Yes, correct!");
-  });
-}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 //
 //
@@ -69,13 +109,13 @@ function answerListners() {
 //       }
 //       return response.json();
 //     })
-//     .then((data) => {
-//       renderScenario(data.scenario);
-//       renderChoices(data.choices);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
+// .then((data) => {
+//   renderScenario(data.scenario);
+//   renderChoices(data.choices);
+// })
+// .catch((error) => {
+//   console.error(error);
+// });
 // }
 
 // function warning() {
