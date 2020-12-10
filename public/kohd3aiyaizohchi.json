@@ -5,5 +5,5 @@
 
   "choices": ["Oxygen", "Nitrogen", "Hydrogen", "Helium"],
 
-  "idealAnswer": "a3"
+  "rubric": "a3"
 }

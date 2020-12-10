@@ -5,5 +5,5 @@
 
   "choices": ["Uranus", "Neptune", "Saturn", "Jupiter"],
 
-  "idealAnswer": "a2"
+  "rubric": "a2"
 }
