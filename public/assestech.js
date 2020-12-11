@@ -3,7 +3,7 @@
 exam();
 
 function exam() {
-  // Add new questions to array
+  // Add new question id to array.
   const questions = ["j001", "kohd3aiyaizohchi", "lhie2zubepeumahl"];
   answerListners();
   let currentQIndex = 0;
@@ -26,32 +26,29 @@ function exam() {
     }
   });
 
-  //
-  //
-  // TO REMOVE
-  //
-  //
-  // console.log(questions);
-  console.log(submission);
-  console.log(currentQIndex);
-
   function answerListners() {
-    // Temporary event handler while coding exam question fetching
-    //
-    // document.querySelector("#a1").addEventListener("click", (event) => {
-    //   alert(event.target.id);
-    // });
-    //
-    document.querySelector("#a1").addEventListener("click", () => {
+    document.querySelector("#a1").addEventListener("click", (event) => {
+      handleAnswering(questions[currentQIndex], event.target.id);
+      //
+      // to remove
       alert("Sorry, incorrect.");
     });
-    document.querySelector("#a2").addEventListener("click", () => {
+    document.querySelector("#a2").addEventListener("click", (event) => {
+      handleAnswering(questions[currentQIndex], event.target.id);
+      //
+      // to remove
       alert("Sorry, incorrect.");
     });
-    document.querySelector("#a3").addEventListener("click", () => {
+    document.querySelector("#a3").addEventListener("click", (event) => {
+      handleAnswering(questions[currentQIndex], event.target.id);
+      //
+      // to remove
       alert("Sorry, incorrect.");
     });
-    document.querySelector("#a4").addEventListener("click", () => {
+    document.querySelector("#a4").addEventListener("click", (event) => {
+      handleAnswering(questions[currentQIndex], event.target.id);
+      //
+      // to remove
       alert("Yes, correct!");
     });
   }
@@ -76,6 +73,15 @@ function exam() {
         console.error(error);
       });
   }
+
+  function handleAnswering(q, a) {
+    submission[q] = a;
+    //
+    // to remove
+    console.log(submission);
+  }
+
+  // END OF EXAM
 }
 
 //
