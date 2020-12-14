@@ -12,37 +12,37 @@ describe("answer choices", () => {
       .get("#a4")
       .should("have.class", "answer-choice");
   });
+  it("changes scenario upon answering", () => {
+    cy.visit("/");
+    cy.get(".scenario")
+      .invoke("text")
+      .then((text1) => {
+        cy.get("#a1").click();
+        cy.get(".scenario")
+          .invoke("text")
+          .should((text2) => {
+            expect(text1).not.to.eq(text2);
+          });
+      });
+  });
 });
 
-// describe("answerChoicesFrom a single element array", () => {
-//   it("returns exact html", () => {
-//     let array = ["choice A"];
-//     let x = `<hr /><button id="a1" class="answer-choice">choice A</button><hr />`;
-//     cy.visit("/").invoke("answerChoicesFrom", array).should("eq", x);
-//   });
-// });
-
-// describe("renderChoices with four-element array", () => {
-//   let array = ["choice A", "choice B", "choice C", "choice D"];
-//   it("renders text with id", () => {
-//     cy.visit("/")
-//       .invoke("renderChoices", array)
-//       .get("#a1")
-//       .get("#a2")
-//       .get("#a3")
-//       .get("#a4")
-//       .get("article.question section.choices")
-//       .as("choices")
-//       .contains("choice A")
-//       .should("have.class", "answer-choice")
-//       .get("@choices")
-//       .contains("choice B")
-//       .should("have.class", "answer-choice")
-//       .get("@choices")
-//       .contains("choice C")
-//       .should("have.class", "answer-choice")
-//       .get("@choices")
-//       .contains("choice D")
-//       .should("have.class", "answer-choice");
-//   });
-// });
+describe("renderChoices with four-element array", () => {
+  let array = ["choice A", "choice B", "choice C", "choice D"];
+  it("renders choices text", () => {
+    cy.visit("/")
+      .invoke("renderChoices", array)
+      .get("#a1")
+      .contains("choice A")
+      .should("have.class", "answer-choice")
+      .get("#a2")
+      .contains("choice B")
+      .should("have.class", "answer-choice")
+      .get("#a3")
+      .contains("choice C")
+      .should("have.class", "answer-choice")
+      .get("#a4")
+      .contains("choice D")
+      .should("have.class", "answer-choice");
+  });
+});
