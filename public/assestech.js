@@ -3,25 +3,11 @@
 // Add new question id to array.
 const questions = ["j001", "kohd3aiyaizohchi", "lhie2zubepeumahl"];
 answerListners();
+setUpExam(questions);
+
 let currentQIndex = 0;
 let submission = {};
 let examPaper = {};
-examPaper[questions[0]] = {
-  scenario: "q1",
-  choices: ["a", "b", "c", "d"],
-  rubric: "a4",
-};
-
-questions.forEach((element, index) => {
-  if (index > 0) {
-    examPaper[element] = {
-      scenario: "",
-      choices: ["", "", "", ""],
-      rubric: "",
-    };
-    getQuestionFor(element);
-  }
-});
 
 function answerListners() {
   document.querySelector("#a1").addEventListener("click", (event) => {
@@ -47,6 +33,12 @@ function answerListners() {
     //
     // to remove
     alert("Yes, correct!");
+  });
+}
+
+function setUpExam(qArray) {
+  qArray.forEach((element) => {
+    getQuestionFor(element);
   });
 }
 
@@ -88,6 +80,14 @@ function progressQuestion() {
   }
 }
 
+// function renderQuestion(qObj = {
+//   scenario: "",
+//   choices: ["", "", "", ""],
+//   rubric: "",
+// }) {
+//   console.log('rendering question')
+// }
+
 function renderQuestion(qIndex) {
   const qId = questions[qIndex];
   renderScenario(examPaper[qId].scenario);
@@ -100,7 +100,6 @@ function renderScenario(string) {
 }
 
 function renderChoices(array) {
-  // #a1 innerHTML =
   const a1 = document.querySelector("#a1");
   a1.innerHTML = array[0];
   const a2 = document.querySelector("#a2");
