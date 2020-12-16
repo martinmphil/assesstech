@@ -2,6 +2,7 @@
 
 // Add new question id to array.
 const questions = ["j001", "kohd3aiyaizohchi", "lhie2zubepeumahl"];
+
 answerListners();
 setUpExam(questions);
 
@@ -36,8 +37,8 @@ function answerListners() {
   });
 }
 
-function setUpExam(qArray) {
-  qArray.forEach((element) => {
+function setUpExam(qRefArr) {
+  qRefArr.forEach((element) => {
     getQuestionFor(element);
   });
 }
@@ -75,23 +76,24 @@ function progressQuestion() {
   currentQIndex += 1;
   if (currentQIndex >= questions.length) {
     alert("END OF EXAM");
+    document.querySelector("main").innerHTML = "";
   } else {
-    renderQuestion(currentQIndex);
+    const qId = questions[currentQIndex];
+    const qObj = examPaper[qId];
+    renderQuestion(qObj);
   }
 }
 
-// function renderQuestion(qObj = {
-//   scenario: "",
-//   choices: ["", "", "", ""],
-//   rubric: "",
-// }) {
-//   console.log('rendering question')
-// }
-
-function renderQuestion(qIndex) {
-  const qId = questions[qIndex];
-  renderScenario(examPaper[qId].scenario);
-  renderChoices(examPaper[qId].choices);
+function renderQuestion(
+  qObj = {
+    scenario: "",
+    choices: ["", "", "", ""],
+    rubric: "",
+  }
+) {
+  renderScenario(qObj.scenario);
+  renderChoices(qObj.choices);
+  console.log("rendering question");
 }
 
 function renderScenario(string) {
