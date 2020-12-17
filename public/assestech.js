@@ -67,9 +67,6 @@ function getQuestionFor(questionId) {
 function handleAnswering(q, a) {
   submission[q] = a;
   progressQuestion();
-  //
-  // to remove
-  console.log(submission);
 }
 
 function progressQuestion() {
@@ -91,9 +88,15 @@ function renderQuestion(
     rubric: "",
   }
 ) {
-  renderScenario(qObj.scenario);
-  renderChoices(qObj.choices);
-  console.log("rendering question");
+  if (validateQ(qObj) === true) {
+    renderScenario(qObj.scenario);
+    renderChoices(qObj.choices);
+  }
+  //
+  //
+  // else {warning}
+  //
+  //
 }
 
 function renderScenario(string) {
@@ -110,6 +113,19 @@ function renderChoices(array) {
   a3.innerHTML = array[2];
   const a4 = document.querySelector("#a4");
   a4.innerHTML = array[3];
+}
+
+function validateQ(qObj) {
+  if (
+    qObj.scenario.length > 0 &&
+    qObj.choices[0].length > 0 &&
+    qObj.choices[1].length > 0 &&
+    qObj.choices[2].length > 0 &&
+    qObj.choices[3].length > 0 &&
+    qObj.rubric.length > 0
+  ) {
+    return true;
+  }
 }
 
 // END OF EXAM
