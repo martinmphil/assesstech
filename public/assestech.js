@@ -81,13 +81,12 @@ function progressQuestion() {
   }
 }
 
-function renderQuestion(
-  qObj = {
-    scenario: "",
-    choices: ["", "", "", ""],
-    rubric: "",
-  }
-) {
+const emptyQuestionObject = {
+  scenario: "",
+  choices: ["", "", "", ""],
+  rubric: "",
+};
+function renderQuestion(qObj = emptyQuestionObject) {
   if (validateQ(qObj) === true) {
     renderScenario(qObj.scenario);
     renderChoices(qObj.choices);
