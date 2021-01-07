@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("home page", () => {
+describe("html", () => {
   it("successfully loads", () => {
     cy.visit("/");
   });

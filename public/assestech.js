@@ -3,39 +3,27 @@
 // Add new question id to array.
 const questions = ["j001", "kohd3aiyaizohchi", "lhie2zubepeumahl"];
 
-answerListners();
+// answerListners();
 setUpExam(questions);
 
-let currentQIndex = 0;
-let submission = {};
+// let currentQIndex = 0;
+// let submission = {};
 let examPaper = {};
 
-function answerListners() {
-  document.querySelector("#a1").addEventListener("click", (event) => {
-    handleAnswering(questions[currentQIndex], event.target.id);
-    //
-    // to remove
-    alert("Sorry, incorrect.");
-  });
-  document.querySelector("#a2").addEventListener("click", (event) => {
-    handleAnswering(questions[currentQIndex], event.target.id);
-    //
-    // to remove
-    alert("Sorry, incorrect.");
-  });
-  document.querySelector("#a3").addEventListener("click", (event) => {
-    handleAnswering(questions[currentQIndex], event.target.id);
-    //
-    // to remove
-    alert("Sorry, incorrect.");
-  });
-  document.querySelector("#a4").addEventListener("click", (event) => {
-    handleAnswering(questions[currentQIndex], event.target.id);
-    //
-    // to remove
-    alert("Yes, correct!");
-  });
-}
+// function answerListners() {
+//   document.querySelector("#a1").addEventListener("click", (event) => {
+//     handleAnswering(questions[currentQIndex], event.target.id);
+//   });
+//   document.querySelector("#a2").addEventListener("click", (event) => {
+//     handleAnswering(questions[currentQIndex], event.target.id);
+//   });
+//   document.querySelector("#a3").addEventListener("click", (event) => {
+//     handleAnswering(questions[currentQIndex], event.target.id);
+//   });
+//   document.querySelector("#a4").addEventListener("click", (event) => {
+//     handleAnswering(questions[currentQIndex], event.target.id);
+//   });
+// }
 
 function setUpExam(qRefArr) {
   qRefArr.forEach((element) => {
@@ -64,68 +52,64 @@ function getQuestionFor(questionId) {
     });
 }
 
-function handleAnswering(q, a) {
-  submission[q] = a;
-  progressQuestion();
-}
+// function handleAnswering(q, a) {
+//   submission[q] = a;
+//   progressQuestion();
+// }
 
-function progressQuestion() {
-  currentQIndex += 1;
-  if (currentQIndex >= questions.length) {
-    alert("END OF EXAM");
-    document.querySelector("main").innerHTML = "";
-  } else {
-    const qId = questions[currentQIndex];
-    const qObj = examPaper[qId];
-    renderQuestion(qObj);
-  }
-}
+// function progressQuestion() {
+//   currentQIndex += 1;
+//   if (currentQIndex >= questions.length) {
+//     alert("END OF EXAM");
+//     document.querySelector("main").innerHTML = "";
+//   } else {
+//     const qId = questions[currentQIndex];
+//     const qObj = examPaper[qId];
+//     renderQuestion(qObj);
+//   }
+// }
 
-const emptyQuestionObject = {
-  scenario: "",
-  choices: ["", "", "", ""],
-  rubric: "",
-};
-function renderQuestion(qObj = emptyQuestionObject) {
-  if (validateQ(qObj) === true) {
-    renderScenario(qObj.scenario);
-    renderChoices(qObj.choices);
-  }
-  //
-  //
-  // else {warning}
-  //
-  //
-}
+// const emptyQuestionObject = {
+//   scenario: "",
+//   choices: ["", "", "", ""],
+//   rubric: "",
+// };
 
-function renderScenario(string) {
-  const el = document.querySelector(".scenario");
-  el.innerHTML = `<p>${string}</p>`;
-}
+// function renderQuestion(qObj = emptyQuestionObject) {
+//   if (validateQ(qObj) === true) {
+//     renderScenario(qObj.scenario);
+//     renderChoices(qObj.choices);
+//   }
+// }
 
-function renderChoices(array) {
-  const a1 = document.querySelector("#a1");
-  a1.innerHTML = array[0];
-  const a2 = document.querySelector("#a2");
-  a2.innerHTML = array[1];
-  const a3 = document.querySelector("#a3");
-  a3.innerHTML = array[2];
-  const a4 = document.querySelector("#a4");
-  a4.innerHTML = array[3];
-}
+// function renderScenario(string) {
+//   const el = document.querySelector(".scenario");
+//   el.innerHTML = `<p>${string}</p>`;
+// }
 
-function validateQ(qObj) {
-  if (
-    qObj.scenario.length > 0 &&
-    qObj.choices[0].length > 0 &&
-    qObj.choices[1].length > 0 &&
-    qObj.choices[2].length > 0 &&
-    qObj.choices[3].length > 0 &&
-    qObj.rubric.length > 0
-  ) {
-    return true;
-  }
-}
+// function renderChoices(array) {
+//   const a1 = document.querySelector("#a1");
+//   a1.innerHTML = array[0];
+//   const a2 = document.querySelector("#a2");
+//   a2.innerHTML = array[1];
+//   const a3 = document.querySelector("#a3");
+//   a3.innerHTML = array[2];
+//   const a4 = document.querySelector("#a4");
+//   a4.innerHTML = array[3];
+// }
+
+// function validateQ(qObj) {
+//   if (
+//     qObj.scenario.length > 0 &&
+//     qObj.choices[0].length > 0 &&
+//     qObj.choices[1].length > 0 &&
+//     qObj.choices[2].length > 0 &&
+//     qObj.choices[3].length > 0 &&
+//     qObj.rubric.length > 0
+//   ) {
+//     return true;
+//   }
+// }
 
 // END OF EXAM
 
@@ -137,3 +121,13 @@ function validateQ(qObj) {
 //   let html = `<p class='warning'>${warning}</p>`;
 //   instructions.innerHTML = html;
 // }
+
+// `<hr />
+// <button id="a1" class="answer-choice">One</button>
+// <hr />
+// <button id="a2" class="answer-choice">Ten</button>
+// <hr />
+// <button id="a3" class="answer-choice">One hundred</button>
+// <hr />
+// <button id="a4" class="answer-choice">One thousand</button>
+// <hr />`
