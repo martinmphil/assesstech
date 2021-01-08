@@ -1,29 +1,11 @@
-"use strict";
+import * as Render from "./Render4mc.js";
+import * as ExamPaper from "./ExamPaper.js";
+// import * as Fetching from "../../public/Fetching.js";
 
-// Add new question id to array.
-const questions = ["j001", "kohd3aiyaizohchi", "lhie2zubepeumahl"];
+// Add new question ID's to following array.
+const questions = ["jepheil9ieb2ozie", "kohd3aiyaizohchi", "lhie2zubepeumahl"];
 
-// answerListners();
 setUpExam(questions);
-
-// let currentQIndex = 0;
-// let submission = {};
-let examPaper = {};
-
-// function answerListners() {
-//   document.querySelector("#a1").addEventListener("click", (event) => {
-//     handleAnswering(questions[currentQIndex], event.target.id);
-//   });
-//   document.querySelector("#a2").addEventListener("click", (event) => {
-//     handleAnswering(questions[currentQIndex], event.target.id);
-//   });
-//   document.querySelector("#a3").addEventListener("click", (event) => {
-//     handleAnswering(questions[currentQIndex], event.target.id);
-//   });
-//   document.querySelector("#a4").addEventListener("click", (event) => {
-//     handleAnswering(questions[currentQIndex], event.target.id);
-//   });
-// }
 
 function setUpExam(qRefArr) {
   qRefArr.forEach((element) => {
@@ -36,98 +18,62 @@ function getQuestionFor(questionId) {
   fetch(url)
     .then((response) => {
       if (!response.ok) {
+        warning();
         throw Error(response.statusText);
       }
       return response.json();
     })
     .then((data) => {
-      examPaper[questionId] = {
+      ExamPaper.questions[questionId] = {
         scenario: data.scenario,
         choices: data.choices,
         rubric: data.rubric,
       };
+      if (questions.indexOf(questionId) === 0) {
+        begin(ExamPaper.questions[questionId]);
+        document.querySelector(".question").style.visibility = "visible";
+      }
     })
     .catch((error) => {
       console.error(error);
     });
 }
 
-// function handleAnswering(q, a) {
-//   submission[q] = a;
-//   progressQuestion();
-// }
+function begin(question) {
+  if (validateQ(question)) {
+    Render.scenario(question.scenario);
+    Render.choices(question.choices);
+  } else {
+    warning();
+  }
+}
 
-// function progressQuestion() {
-//   currentQIndex += 1;
-//   if (currentQIndex >= questions.length) {
-//     alert("END OF EXAM");
-//     document.querySelector("main").innerHTML = "";
-//   } else {
-//     const qId = questions[currentQIndex];
-//     const qObj = examPaper[qId];
-//     renderQuestion(qObj);
-//   }
-// }
+function validateQ(qObj) {
+  if (
+    qObj.scenario.length > 0 &&
+    qObj.choices[0].length > 0 &&
+    qObj.choices[1].length > 0 &&
+    qObj.choices[2].length > 0 &&
+    qObj.choices[3].length > 0 &&
+    qObj.rubric.length > 0
+  ) {
+    return true;
+  } else {
+    warning();
+  }
+}
 
-// const emptyQuestionObject = {
-//   scenario: "",
-//   choices: ["", "", "", ""],
-//   rubric: "",
-// };
-
-// function renderQuestion(qObj = emptyQuestionObject) {
-//   if (validateQ(qObj) === true) {
-//     renderScenario(qObj.scenario);
-//     renderChoices(qObj.choices);
-//   }
-// }
-
-// function renderScenario(string) {
-//   const el = document.querySelector(".scenario");
-//   el.innerHTML = `<p>${string}</p>`;
-// }
-
-// function renderChoices(array) {
-//   const a1 = document.querySelector("#a1");
-//   a1.innerHTML = array[0];
-//   const a2 = document.querySelector("#a2");
-//   a2.innerHTML = array[1];
-//   const a3 = document.querySelector("#a3");
-//   a3.innerHTML = array[2];
-//   const a4 = document.querySelector("#a4");
-//   a4.innerHTML = array[3];
-// }
-
-// function validateQ(qObj) {
-//   if (
-//     qObj.scenario.length > 0 &&
-//     qObj.choices[0].length > 0 &&
-//     qObj.choices[1].length > 0 &&
-//     qObj.choices[2].length > 0 &&
-//     qObj.choices[3].length > 0 &&
-//     qObj.rubric.length > 0
-//   ) {
-//     return true;
-//   }
-// }
-
-// END OF EXAM
+function warning() {
+  let instructions = document.querySelector(".instructions");
+  let warning = "Sorry we encountered a problem. Please try again later.";
+  let html = `<p class='warning'>${warning}</p>`;
+  instructions.innerHTML = html;
+}
 
 //
 //
-// function warning() {
-//   let instructions = document.querySelector(".instructions");
-//   let warning = "Sorry we encountered a problem. Please try again later.";
-//   let html = `<p class='warning'>${warning}</p>`;
-//   instructions.innerHTML = html;
-// }
-
-// `<hr />
-// <button id="a1" class="answer-choice">One</button>
-// <hr />
-// <button id="a2" class="answer-choice">Ten</button>
-// <hr />
-// <button id="a3" class="answer-choice">One hundred</button>
-// <hr />
-// <button id="a4" class="answer-choice">One thousand</button>
-// <hr />`
+//
+// TO REMOVE
+document.querySelector("#a1").addEventListener("click", () => {
+  begin(ExamPaper.questions["kohd3aiyaizohchi"]);
+});
