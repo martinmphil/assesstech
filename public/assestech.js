@@ -1,5 +1,5 @@
-import * as Render from "./Render4mc.js";
-import * as ExamPaper from "./ExamPaper.js";
+import * as render from "./render4mc.js";
+import * as examPaper from "./exam-paper.js";
 // import * as Fetching from "../../public/Fetching.js";
 
 // Add new question ID's to following array.
@@ -14,7 +14,7 @@ function setUpExam(qRefArr) {
 }
 
 function getQuestionFor(questionId) {
-  let url = `./${questionId}.json`;
+  let url = `./questions/${questionId}.json`;
   fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -24,13 +24,13 @@ function getQuestionFor(questionId) {
       return response.json();
     })
     .then((data) => {
-      ExamPaper.questions[questionId] = {
+      examPaper.questions[questionId] = {
         scenario: data.scenario,
         choices: data.choices,
         rubric: data.rubric,
       };
       if (questions.indexOf(questionId) === 0) {
-        begin(ExamPaper.questions[questionId]);
+        begin(examPaper.questions[questionId]);
         document.querySelector(".question").style.visibility = "visible";
       }
     })
@@ -41,8 +41,8 @@ function getQuestionFor(questionId) {
 
 function begin(question) {
   if (validateQ(question)) {
-    Render.scenario(question.scenario);
-    Render.choices(question.choices);
+    render.scenario(question.scenario);
+    render.choices(question.choices);
   } else {
     warning();
   }
@@ -75,5 +75,5 @@ function warning() {
 //
 // TO REMOVE
 document.querySelector("#a1").addEventListener("click", () => {
-  begin(ExamPaper.questions["kohd3aiyaizohchi"]);
+  begin(examPaper.questions["kohd3aiyaizohchi"]);
 });
