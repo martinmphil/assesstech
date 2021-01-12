@@ -1,9 +1,14 @@
-function scenario(string) {
+function render(question) {
+  scenarioRender(question.scenario);
+  choicesRender(question.choices);
+}
+
+function scenarioRender(string) {
   const el = document.querySelector(".scenario");
   el.innerHTML = `<p>${string}</p>`;
 }
 
-function choices(array) {
+function choicesRender(array) {
   const a1 = document.querySelector("#a1");
   a1.innerHTML = array[0];
   const a2 = document.querySelector("#a2");
@@ -14,4 +19,4 @@ function choices(array) {
   a4.innerHTML = array[3];
 }
 
-export { scenario, choices };
+export { render };
