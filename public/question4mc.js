@@ -19,4 +19,23 @@ function choicesRender(array) {
   a4.innerHTML = array[3];
 }
 
-export { render };
+function validate(qObj) {
+  if (
+    qObj &&
+    qObj.scenario &&
+    qObj.choices &&
+    qObj.rubric &&
+    qObj.scenario.length > 0 &&
+    qObj.choices[0].length > 0 &&
+    qObj.choices[1].length > 0 &&
+    qObj.choices[2].length > 0 &&
+    qObj.choices[3].length > 0 &&
+    qObj.rubric.length > 0
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export { render, validate };
