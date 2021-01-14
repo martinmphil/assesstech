@@ -57,8 +57,7 @@ function progressQuestion() {
   const qId = questions[currentQIndex];
   const qObj = examPaper[qId];
   if (currentQIndex >= questions.length) {
-    alert("END OF EXAM");
-    document.querySelector("main").innerHTML = "";
+    document.querySelector("main").innerHTML = "<p>END OF EXAM</p>";
   } else if (q4mc.validate(qObj) === true) {
     q4mc.render(qObj);
   } else warning.show();
