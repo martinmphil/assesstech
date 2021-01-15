@@ -1,0 +1,11 @@
+.question {
+  visibility: hidden;
+}
+
+.warning {
+  color: red;
+  font-weight: 900;
+  text-align: center;
+  border: solid;
+  padding: 1em;
+}

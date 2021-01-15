@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe("home page", () => {
+describe("html", () => {
   it("successfully loads", () => {
     cy.visit("/");
   });
@@ -20,5 +20,9 @@ describe("home page", () => {
   });
   it("has answer-choices section in question", () => {
     cy.get("article.question section.choices");
+    cy.get(".choices > button").eq(0).should("have.id", "a1");
+    cy.get(".choices > button").eq(1).should("have.id", "a2");
+    cy.get(".choices > button").eq(2).should("have.id", "a3");
+    cy.get(".choices > button").eq(3).should("have.id", "a4");
   });
 });

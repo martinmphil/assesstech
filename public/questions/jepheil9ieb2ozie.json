@@ -1,0 +1,9 @@
+{
+  "question_structure": "four_multiple_choices",
+
+  "scenario": "If you raise up a 100g apple through 1m from a low table to your mouth, how many people would need to raise up similar apples in 1s to expend power at a rate of 1 killowatt? <br />Where: <br />Force due to gravity, F = 10 newtons per kilogramme; <br />x = distance in metres; <br />Work done in joules, W = F.x; <br />Power in watts, P= dW/dt",
+
+  "choices": ["One", "Ten", "One hundred", "One thousand"],
+
+  "rubric": "a4"
+}
