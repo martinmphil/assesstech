@@ -34,21 +34,27 @@ answerListners();
 
 function answerListners() {
   document.querySelector("#a1").addEventListener("click", (event) => {
-    handleAnswering(questions[currentQIndex], event.target.id);
+    handleAnswering(event.target.id);
   });
   document.querySelector("#a2").addEventListener("click", (event) => {
-    handleAnswering(questions[currentQIndex], event.target.id);
+    handleAnswering(event.target.id);
   });
   document.querySelector("#a3").addEventListener("click", (event) => {
-    handleAnswering(questions[currentQIndex], event.target.id);
+    handleAnswering(event.target.id);
   });
   document.querySelector("#a4").addEventListener("click", (event) => {
-    handleAnswering(questions[currentQIndex], event.target.id);
+    handleAnswering(event.target.id);
   });
 }
 
-function handleAnswering(q, a) {
-  submission[q] = a;
+function handleAnswering(a) {
+  let qId = questions[currentQIndex];
+  let rubric = examPaper[qId].rubric;
+  let mark = 0;
+  if (a === rubric) {
+    mark = 1;
+  }
+  submission[qId] = { a, mark };
   progressQuestion();
 }
 
