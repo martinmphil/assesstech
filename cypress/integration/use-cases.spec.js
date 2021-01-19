@@ -36,5 +36,6 @@ describe("question with four multiple choices answers", () => {
     cy.get("#a3").click();
     cy.get("article.question").should("not.exist");
     cy.get("main").contains("end of exam", { matchCase: false });
+    cy.get("main").contains("out of", { matchCase: false });
   });
 });

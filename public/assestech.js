@@ -5,7 +5,10 @@ import * as warning from "./warning.js";
 // Add new question Id's to this array.
 const questions = ["jepheil9ieb2ozie", "kohd3aiyaizohchi", "lhie2zubepeumahl"];
 
+// app state
 let currentQIndex = 0;
+
+// records
 let submission = {};
 let examPaper = {};
 
@@ -63,8 +66,20 @@ function progressQuestion() {
   const qId = questions[currentQIndex];
   const qObj = examPaper[qId];
   if (currentQIndex >= questions.length) {
-    document.querySelector("main").innerHTML = "<p>END OF EXAM</p>";
+    let outOf = questions.length;
+    let finalMark = tally();
+    let html = `<p>You achieved ${finalMark} out of ${outOf}.</p><p>END OF EXAM</p>`;
+    document.querySelector("main").innerHTML = html;
   } else if (q4mc.validate(qObj) === true) {
     q4mc.render(qObj);
   } else warning.show();
+}
+
+function tally() {
+  let result = questions
+    .map((x) => {
+      return submission[x].mark;
+    })
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  return result;
 }
