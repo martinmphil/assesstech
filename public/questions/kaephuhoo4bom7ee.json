@@ -1,7 +1,7 @@
 {
   "question_structure": "four_multiple_choices",
 
-  "scenario": "For a domestic ventilation systems, which of the following statements is NOT true? ",
+  "scenario": "For domestic ventilation systems, which of the following statements is NOT true? ",
 
   "choices": [
     "Ventilation systems minimise energy consumption.",
