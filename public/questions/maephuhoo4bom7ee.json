@@ -1,0 +1,14 @@
+{
+  "question_structure": "four_multiple_choices",
+
+  "scenario": "For a domestic ventilation systems, which of the following statements is NOT true? ",
+
+  "choices": [
+    "Ventilation systems minimise energy consumption.",
+    "Ventilation systems remove water vapour.",
+    "Ventilation systems dilute pollutants.",
+    "Ventilation systems minimise mould growth."
+  ],
+
+  "rubric": "a1"
+}
