@@ -31,11 +31,15 @@ describe("question with four multiple choices answers", () => {
 
   it("grades exam", () => {
     cy.visit("/");
-    cy.get("#a1").click();
-    cy.get("#a2").click();
-    cy.get("#a3").click();
-    cy.get("article.question").should("not.exist");
-    cy.get("main").contains("end of exam", { matchCase: false });
-    cy.get("main").contains("out of", { matchCase: false });
+    cy.get(".scenario").invoke("text").should("have.length.of.at.least", 2);
+    // In index.js -> window.questions = questions
+    cy.window().then((win) => {
+      const qList = win.questions;
+      qList.forEach((element) => {
+        cy.get("#a1").click();
+      });
+      cy.get("main").contains("end of exam", { matchCase: false });
+      cy.get("main").contains("out of", { matchCase: false });
+    });
   });
 });
