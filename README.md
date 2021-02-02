@@ -13,11 +13,11 @@ $ npm install
 ### Run
 
 ```
-$ node app.js
+$ npm start
 ```
 
 ### Test
 
 ```
-$ npx cypress open
+$ npm test
 ```
