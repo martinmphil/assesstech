@@ -1,0 +1,14 @@
+{
+  "question_structure": "four_multiple_choices",
+
+  "scenario": "What is the maximum average A-weighted sound pressure level in noise sensitive rooms, such as bedrooms and living rooms, allowed for ventilation systems?",
+
+  "choices": [
+    "25 dB L<sub>Aeq,1 min</sub>",
+    "30 dB L<sub>Aeq,1 min</sub>",
+    "35  dB L<sub>Aeq,1 min</sub>",
+    "40 dB L<sub>Aeq,1 min</sub>"
+  ],
+
+  "rubric": "a2"
+}

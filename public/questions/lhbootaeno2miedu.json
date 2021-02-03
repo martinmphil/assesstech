@@ -1,0 +1,9 @@
+{
+  "question_structure": "four_multiple_choices",
+
+  "scenario": "What is the ventilation effectiveness if supply air is mixed fully with room air before it is breathed by the occupants?",
+
+  "choices": ["Zero", "One", "Ten", "Infinity"],
+
+  "rubric": "a2"
+}

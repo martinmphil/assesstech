@@ -3,7 +3,12 @@ import * as fetching from "./fetching.js";
 import * as warning from "./warning.js";
 
 // Add new question Id's to this array.
-const questions = ["jepheil9ieb2ozie", "kaephuhoo4bom7ee", "zhie2zubepeumahl"];
+const questions = [
+  "jepheil9ieb2ozie",
+  "kaephuhoo4bom7ee",
+  "lhbootaeno2miedu",
+  "moh4foo3pheefaed",
+];
 
 // app state
 let currentQIndex = 0;
@@ -82,4 +87,9 @@ function tally() {
     })
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   return result;
+}
+
+// For testing purposes only
+if (window.Cypress) {
+  window.questions = questions;
 }
