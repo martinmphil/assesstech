@@ -1,0 +1,14 @@
+{
+  "question_structure": "four_multiple_choices",
+
+  "scenario": "According to UK government 2010 building regulations for whole dwelling ventilation rates, what is the recommended minimum ventilation rate per square metre of internal floor area?",
+
+  "choices": [
+    "0.1 l/s per m<sup>2</sup>",
+    "0.2 l/s per m<sup>2</sup>",
+    "0.3 l/s per m<sup>2</sup>",
+    "0.4 l/s per m<sup>2</sup>"
+  ],
+
+  "rubric": "a3"
+}
